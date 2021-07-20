@@ -1,22 +1,27 @@
 const express = require('express');
+//.ENV
+const dotenv = require('dotenv');
+dotenv.config();
 
 //Line Config
 const line = require('@line/bot-sdk');
 const config = {
-    channelAccessToken: 'PRrqvDT5kgSxQHusUpJ35S/C1grTExqv+IVcSJe+da95taS4p2h1wBWvjnFXKlbS102VLD158im9MjJ66FXHLd0Rw/tjquPabpmyuoaLKDhHtYfE0ARW+AToH/vXo8FiMlYGwRgAjXnoE6/4m6YSjgdB04t89/1O/w1cDnyilFU=',
-    channelSecret: '8eaba734ee3b647dc4302e7503684461'
+    channelAccessToken: process.env.channelAccessToken,
+    channelSecret: process.env.channelSecret
+
 };
 const client = new line.Client(config);
 const firebase = require('firebase');
 require("firebase/firestore");
 const firebaseConfig = {
-    apiKey: "AIzaSyDcty1VESKhlcbqD3MwJDYinPjtOmPFcus",
-    authDomain: "lineoa-65be9.firebaseapp.com",
-    projectId: "lineoa-65be9",
-    storageBucket: "lineoa-65be9.appspot.com",
-    messagingSenderId: "746449704094",
-    appId: "1:746449704094:web:97b4eebc59098aa258178f",
-    measurementId: "G-DJLV0HVX5X"
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId,
+    measurementId: process.env.measurementId
+
 } 
 const admin = firebase.initializeApp(firebaseConfig);
 const db = admin.firestore();
@@ -60,7 +65,7 @@ app.get('/test-firebase', async function (req, res) {
 })
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
 app.post('/', function (req, res) {
