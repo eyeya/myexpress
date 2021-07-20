@@ -54,6 +54,9 @@ async function handleEvent(event) {
 
 
 // Respond with Hello World! on the homepage:
+app.get('/', function (req, res) {
+    res.send('Hello World !')
+})
 app.get('/test-firebase', async function (req, res) {
     let data = {
         name: 'Tokyo',
