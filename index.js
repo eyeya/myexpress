@@ -25,6 +25,11 @@ const firebaseConfig = {
 } 
 const admin = firebase.initializeApp(firebaseConfig);
 const db = admin.firestore();
+
+//Fetch or AXOIS
+const fetch = require('node-fetch');
+
+//WEB
 const app = express();
 const port = 3000
 
@@ -66,6 +71,22 @@ app.get('/test-firebase', async function (req, res) {
     console.log('Added document with ID: ', result.id);
     res.send('Test firebase successfully, check your firestore for a new record !!!')
 })
+
+
+app.get('/vaccine/fetch', async (req, res) => {
+    //FETCH
+    let response = await fetch('https://covid19-cdn.workpointnews.com/api/vaccine.json');
+    let data = await response.json();
+    console.log(data);
+
+    //SAVE TO FIRESTORE
+    let current_date = (new Date()).toISOString().split("T")[0];
+    await db.collection('vaccines').doc(current_date).set(data);
+
+    //SEND TO BROWSER AS HTML OR TEXT
+    let text = JSON.stringify(data);
+    res.send(text)
+});
 
 
 app.listen(process.env.PORT || port, () => {
