@@ -1,0 +1,99 @@
+{
+    "type": "flex",
+    "altText": "This is a Flex Message",
+    "contents": {
+        "type": "bubble",
+        "hero": {
+          "type": "image",
+          "url": "https://www.matichon.co.th/wp-content/uploads/2021/06/aHR0cHM6Ly9zLmlzYW5vb2suY29tL2hlLzAvdWQvNS8yODQ2NS92YWNjaW5lLWNvdmlkMTktMi5qcGc.jpg",
+          "size": "full",
+          "aspectRatio": "20:13",
+          "aspectMode": "cover",
+          "action": {
+            "type": "uri",
+            "label": "Line",
+            "uri": "https://linecorp.com/"
+          }
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "ข้อมูลวัคซีน",
+              "weight": "bold",
+              "size": "xl",
+              "contents": []
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "sm",
+              "margin": "lg",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "spacing": "sm",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "ฉีดวัคซีน 1 เข็ม : ${vaccince.oneDose.total} (${vaccince.oneDose.percent}%)",
+                      "size": "sm",
+                      "color": "#666666",
+                      "flex": 5,
+                      "wrap": true,
+                      "contents": []
+                    }
+                  ]
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "spacing": "sm",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "ฉีดวัคซีน 2 เข็ม : ${vaccince.twoDose.total} (${vaccince.twoDose.percent}%) (5%)",
+                      "size": "sm",
+                      "color": "#666666",
+                      "flex": 5,
+                      "wrap": true,
+                      "contents": []
+                    }
+                  ]
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "รวมทั้งหมด : ${vaccince.all.total} (${vaccince.all.percent}%)",
+                      "contents": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "image",
+              "url": "https://developers.line.biz/assets/images/services/bot-designer-icon.png"
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "flex": 0,
+          "spacing": "sm",
+          "contents": [
+            {
+              "type": "spacer",
+              "size": "xs"
+            }
+          ]
+        }
+      }
+}

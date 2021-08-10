@@ -69,6 +69,25 @@ async function handleEvent(event) {
 
       //SWITCH FOR MANY CASES
       switch (event.message.text) {
+        case "test":
+            let payload_flex = require('./payloads/test.json');
+            let str_payload_flex = JSON.stringify(payload_flex);
+            let person = {
+                name : "Chavalit",
+                lastname : "Koweerawong",
+            }
+            payload_flex = JSON.parse(eval('`'+str_payload_flex+'`'));
+            return client.replyMessage(event.replyToken, payload_flex);
+            break;
+
+        case "flex":
+            let payload_template = require('./payloads/template.json'); 
+            let str_payload_template = JSON.stringify(payload_template);
+            let vaccince = await getTodayCovid();
+            payload_template = JSON.parse(eval('`' + str_payload_template + '`'));       
+            //console.log(payload_template);    
+            return client.replyMessage(event.replyToken, payload_template);
+            break;
         case "covid":
             //let newText = "สวัสดี เราเป็นบอทรายงานสถิติโควิดนะ";
             let data = await getTodayCovid();
