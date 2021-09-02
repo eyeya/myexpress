@@ -1,0 +1,27 @@
+<body>
+    <h1>This is media page !!! </h1>
+    <div id="gallery"></div>
+    <script>
+        console.log("HI");
+        fetch('api/media')
+            .then(async function (response) {
+                console.log("Fetch");
+                let medias = await response.json();
+                console.log(medias);
+                let gallery = document.querySelector("#gallery");
+                console.log(gallery);
+                for(let item of medias){
+                    let link = item.mediaLink;
+                    let img = document.createElement("img");
+                    img.src = link;
+                    img.height = "100";
+                    img.style = "padding : 10px;";
+                    gallery.appendChild(img)
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    </script>
+
+</body>
